@@ -44,11 +44,11 @@ public class FlightServiceImpl implements FlightService{
 	
 	@Override
 	public void updateFlight(String flightNumber, FlightModel newFlight) {
-		FlightModel flightLama = this.getFlightDetailByFlightNumber(flightNumber);
-		flightLama.setFlightNumber(newFlight.getFlightNumber());
-		flightLama.setOrigin(newFlight.getOrigin());
-		flightLama.setDestination(newFlight.getDestination());
-		flightLama.setTime(newFlight.getTime());
+		FlightModel oldFlight = this.getFlightDetailByFlightNumber(flightNumber);
+		oldFlight.setFlightNumber(newFlight.getFlightNumber());
+		oldFlight.setOrigin(newFlight.getOrigin());
+		oldFlight.setDestination(newFlight.getDestination());
+		oldFlight.setTime(newFlight.getTime());
 	}
 
 }

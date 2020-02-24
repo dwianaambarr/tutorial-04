@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
 
-<title>Add</title>
+<head>
+	<title>Error</title>
 </head>
+
 <body>
 <button type="button" th:attr="onClick=|window.location.href='/'|">Back to Home</button>
-	<h2>Data Berhasil Ditambahkan!</h2>
+	<h2 th:text="'License number ' + ' already exist!'"></h2>
 </body>
+
 </html>

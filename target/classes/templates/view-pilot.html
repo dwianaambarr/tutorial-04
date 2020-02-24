@@ -6,22 +6,38 @@
 </head>
 
 <body>
+
+<button type="button" th:attr="onClick=|window.location.href='/'|">Home</button>
+
 	<h2>Hello!</h2>
 
-<a th:href="@{'/listFlights'}">View Flight List</a>
-<h2 th:text="'Pilot License Number:' + ${pilot.licenseNumber}">Pilot License Number</h2>
-	<h2 th:text="'Name:' + ${pilot.name}">Name</h2>
-	<h2 th:text="'Fly Hour:' + ${pilot.flyHour}">Fly Hour</h2>
+<!-- Latihan 5
+    Menambahkan fitur untuk melihat daftar semua flight-->
+<a th:href="@{'/listFlights'}">View All Flights</a>
+
+<!-- Latihan 1
+    Menampilkan data pilot sesuai dengan lisence number yang dicari-->
+<h3 th:text="'Pilot License Number: ' + ${pilot.licenseNumber}">Pilot License Number</h3>
+	<h3 th:text="'Name: ' + ${pilot.name}">Name</h3>
+	<h3 th:text="'Fly Hour: ' + ${pilot.flyHour}">Fly Hour</h3>
 	<a th:href="@{'/flight/add/' +${pilot.licenseNumber}}">Add Flight</a>
 
+	<!-- Latihan 2
+    Menambahkan daftar penerbangan dari pilot yang sedang ditampilkan-->
 	<div th:each="flight : ${listFlight}">
-		<h3>---------------------------------------------------------------------------</h3>
-		<h3 th:text="${flight.flightNumber}"></h3>
-		<h3 th:text="${flight.origin}"></h3>
-		<h3 th:text="${flight.destination}"></h3>
-		<h3 th:text="${flight.time.toString()}"></h3>
+		<h4>---------------------------------------------------------------------------</h4>
+		<h4 th:text="'Flight Number: ' + ${flight.flightNumber}"></h4>
+		<h4 th:text="'Origin: ' + ${flight.origin}"></h4>
+		<h4 th:text="'Destination: ' + ${flight.destination}"></h4>
+		<h4 th:text="'Time: ' +${flight.time.toString()}"></h4>
+		
+		<!-- Latihan 3
+        Menambah Tombol Delete -->
 		<a th:href="@{'/pilot/'+${pilot.licenseNumber}+'/flight/delete/' +${flight.flightNumber}}">Delete</a>
-		<a th:href="@{'/pilot/'+${pilot.licenseNumber}+'/flight/update/' +${flight.flightNumber}}">Update</a>	
+		
+		<!-- Latihan 4
+        Menambah Tombol Update -->
+		<a th:href="@{'/pilot/'+${pilot.licenseNumber}+'/flight/update/' +${flight.flightNumber}}">Update</a>
 	</div>
 	
 </body>

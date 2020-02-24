@@ -75,12 +75,15 @@ public class PilotController {
 	@RequestMapping(value = "/pilot/delete/{licenseNumber}", method = RequestMethod.GET)
 	private String deletePilot(@PathVariable(value = "licenseNumber") String licenseNumber, Model model) {
 		PilotModel pilotDelete = pilotService.getPilotDetailByLicenseNumber(licenseNumber); 
-		if(pilotDelete.getPilotFlight().size() == 0) {
+		boolean isEmpty = pilotDelete.getPilotFlight().isEmpty(); 
+		if(isEmpty == true) {
 			pilotService.deletePilot(licenseNumber);
 		}else {
 			pilotDelete.getPilotFlight().clear();
 			pilotService.deletePilot(licenseNumber);
-		} return "delete";
+		} 
+		model.addAttribute("pilot", pilotDelete);
+		return "delete";
 	}
 	
 	// Latihan 4

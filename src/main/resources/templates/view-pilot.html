@@ -21,6 +21,14 @@
 	<h3 th:text="'Name: ' + ${pilot.name}">Name</h3>
 	<h3 th:text="'Fly Hour: ' + ${pilot.flyHour}">Fly Hour</h3>
 	<a th:href="@{'/flight/add/' +${pilot.licenseNumber}}">Add Flight</a>
+	
+	<!-- Latihan 3
+        Menambah Tombol Delete Pilot-->
+		<a th:href="@{'/pilot/delete/'+${pilot.licenseNumber}}">Delete Pilot</a>
+		
+		<!-- Latihan 4
+        Menambah Tombol Update Pilot-->
+		<!--<a th:href="@{'/pilot/update/'+${pilot.licenseNumber}}">Update Pilot</a>
 
 	<!-- Latihan 2
     Menambahkan daftar penerbangan dari pilot yang sedang ditampilkan-->
@@ -32,11 +40,11 @@
 		<h4 th:text="'Time: ' +${flight.time.toString()}"></h4>
 		
 		<!-- Latihan 3
-        Menambah Tombol Delete -->
+        Menambah Tombol Delete Flight-->
 		<a th:href="@{'/pilot/'+${pilot.licenseNumber}+'/flight/delete/' +${flight.flightNumber}}">Delete</a>
 		
 		<!-- Latihan 4
-        Menambah Tombol Update -->
+        Menambah Tombol Update FLight-->
 		<a th:href="@{'/pilot/'+${pilot.licenseNumber}+'/flight/update/' +${flight.flightNumber}}">Update</a>
 	</div>
 	

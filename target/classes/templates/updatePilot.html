@@ -8,12 +8,12 @@
 	<h2>Hello!</h2>
 	
 	<h3>Update Pilot</h3>
-	<form th:action="@{/pilot/update/{licenseNumber}(licenseNumber=${pilotLama.licenseNumber})}" th:object="${pilotBaru}" method="POST">
+	<form th:action="@{/pilot/update/{licenseNumber}(licenseNumber=${oldPilot.licenseNumber})}" th:object="${newPilot}" method="POST">
 		Name: <br>
-		<input type="text" name="name" th:field="${pilotLama.name}"/>
+		<input type="text" name="name" th:field="${oldPilot.name}"/>
 		<br>
 		Fly Hour: <br>
-		<input type="number" name="flyHour" th:field="${pilotLama.flyHour}"/>
+		<input type="number" name="flyHour" th:field="${oldPilot.flyHour}"/>
 		<br><br>
 		<button type="submit">Submit</button>
 	

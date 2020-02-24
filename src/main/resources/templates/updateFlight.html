@@ -8,18 +8,18 @@
 	<h2>Hello!</h2>
 	
 	<h3>Update Flight</h3>
-	<form th:action="@{/pilot/{licenseNumber}/flight/update/{flightNumber} (licenseNumber=${pilot.licenseNumber},flightNumber=${flightLama.flightNumber})}" th:object="${flightBaru}" method="POST">
+	<form th:action="@{/pilot/{licenseNumber}/flight/update/{flightNumber} (licenseNumber=${pilot.licenseNumber},flightNumber=${oldFlight.flightNumber})}" th:object="${newFlight}" method="POST">
 		Flight Number: <br>
-		<input type="text" name="flightNumber" th:field="${flightLama.flightNumber}"/>
+		<input type="text" name="flightNumber" th:field="${oldFlight.flightNumber}"/>
 		<br>
 		Origin: <br>
-		<input type="text" name="origin" th:field="${flightLama.origin}"/>
+		<input type="text" name="origin" th:field="${oldFlight.origin}"/>
 		<br>
 		Destination: <br>
-		<input type="text" name="destination" th:field="${flightLama.destination}"/>
+		<input type="text" name="destination" th:field="${oldFlight.destination}"/>
 		<br>
 		Time: <br>
-		<input type="date" name="time" th:field="${flightLama.time}" />
+		<input type="date" name="time" th:field="${oldFlight.time}" />
 		<br><br>
 		<button type="submit">Submit</button>
 	

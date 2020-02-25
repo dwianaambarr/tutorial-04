@@ -9,7 +9,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.apap.tu04.model.FlightModel;
 import com.apap.tu04.model.PilotModel;
+import com.apap.tu04.service.FlightService;
 import com.apap.tu04.service.PilotService;
 
 /**
@@ -74,17 +76,16 @@ public class PilotController {
     // Membuat Fitur Delete Pilot
 	@RequestMapping(value = "/pilot/delete/{licenseNumber}", method = RequestMethod.GET)
 	private String deletePilot(@PathVariable(value = "licenseNumber") String licenseNumber, Model model) {
-		PilotModel pilotDelete = pilotService.getPilotDetailByLicenseNumber(licenseNumber); 
-		boolean isEmpty = pilotDelete.getPilotFlight().isEmpty(); 
-		if(isEmpty == true) {
+			PilotModel pilot = pilotService.getPilotDetailByLicenseNumber(licenseNumber);
+			model.addAttribute("pilot", pilot);
+			return "deletePilot";
+		}
+	
+	@RequestMapping(value = "/pilot/delete/{licenseNumber}", method = RequestMethod.POST)
+	private String deletePilot(@PathVariable(value = "licenseNumber") String licenseNumber) {
 			pilotService.deletePilot(licenseNumber);
-		}else {
-			pilotDelete.getPilotFlight().clear();
-			pilotService.deletePilot(licenseNumber);
-		} 
-		model.addAttribute("pilot", pilotDelete);
-		return "delete";
-	}
+			return "delete";
+		}
 	
 	// Latihan 4
     // Membuat Fitur Update Pilot

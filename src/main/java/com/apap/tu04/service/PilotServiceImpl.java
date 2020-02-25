@@ -33,7 +33,7 @@ public class PilotServiceImpl implements PilotService{
 	
 	@Override
 	public void deletePilot(String licenseNumber) {
-		pilotDb.delete(this.getPilotDetailByLicenseNumber(licenseNumber));
+		pilotDb.deleteByLicenseNumber(licenseNumber);
 	}
 
 	@Override

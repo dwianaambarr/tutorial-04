@@ -46,12 +46,25 @@ public class FlightController {
 	}
 	
 	@RequestMapping(value = "/pilot/{licenseNumber}/flight/delete/{flightNumber}", method = RequestMethod.GET)
-	private String deleteFlight(@PathVariable(value = "flightNumber") String flightNumber,@PathVariable(value = "licenseNumber") String licenseNumber, Model model) {
+	private String deleteFlight(@PathVariable(value = "flightNumber") String flightNumber, @PathVariable(value = "licenseNumber") String licenseNumber, Model model) {
 		flightService.deleteFlight(flightNumber);
 		PilotModel pilot = pilotService.getPilotDetailByLicenseNumber(licenseNumber);
 		model.addAttribute("pilot", pilot);
-		return "delete";
+		return "deleteFlight";
 	}
+//		PilotModel pilot = pilotService.getPilotDetailByLicenseNumber(licenseNumber);
+//		FlightModel flight = flightService.getFlightDetailByFlightNumber(flightNumber);
+//		model.addAttribute("pilot", pilot);
+//		model.addAttribute("flight", flight);
+//		return "deleteFlight";
+//	}
+//	
+//	@RequestMapping(value = "/pilot/{licenseNumber}/flight/delete/{flightNumber}", method = RequestMethod.POST)
+//	private String deleteFlight(@PathVariable(value = "flightNumber") String flightNumber, @PathVariable(value = "licenseNumber") String licenseNumber) {
+//			//String license = pilot.getLicenseNumber();
+//			flightService.deleteFlight(flightNumber);
+//			return "delete";
+//		}
 	
 	@RequestMapping(value = "/pilot/{licenseNumber}/flight/update/{flightNumber}", method = RequestMethod.GET)
 	private String updateFlight(@PathVariable (value = "licenseNumber") String licenseNumber, @PathVariable(value = "flightNumber") String flightNumber, Model model) {

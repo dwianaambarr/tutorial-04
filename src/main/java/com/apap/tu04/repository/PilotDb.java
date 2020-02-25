@@ -13,4 +13,5 @@ import org.springframework.stereotype.Repository;
 
 public interface PilotDb extends JpaRepository<PilotModel, Long>{
 	PilotModel findByLicenseNumber(String licenseNumber);
+	void deleteByLicenseNumber(String licenseNumber);
 }

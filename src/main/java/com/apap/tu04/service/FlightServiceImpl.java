@@ -42,6 +42,7 @@ public class FlightServiceImpl implements FlightService{
 		flightDb.delete(this.getFlightDetailByFlightNumber(flightNumber));
 	}
 	
+	
 	@Override
 	public void updateFlight(String flightNumber, FlightModel newFlight) {
 		FlightModel oldFlight = this.getFlightDetailByFlightNumber(flightNumber);
